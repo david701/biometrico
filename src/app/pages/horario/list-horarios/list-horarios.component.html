@@ -1,0 +1,293 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+        <mat-card-title>Horario</mat-card-title>
+        <div class="main-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="row">
+                                <div class="col-md card-header card-header-danger">
+                                    <h4 class="card-title">Horarios</h4>
+                                    <div class="example-action-buttons">
+                                        <button mat-button (click)="accordion.openAll()">Expandir Todo</button>
+                                        <button mat-button (click)="accordion.closeAll()">Comprimir Todo</button>
+                                        <button mat-flat-button color="accent" [routerLink]="['../add-horarios']">Crear Horario</button>
+                                      </div>
+                                      
+                                      <mat-accordion class="example-headers-align" multi>
+                                            
+
+                                        <form #forTemplateupdateFuncionario="ngForm">
+                                            <mat-expansion-panel *ngFor="let panel of data">
+                                                
+                                                    <mat-expansion-panel-header>
+                                                        <mat-panel-title>
+                                                            {{panel.descripcion}}
+                                                        </mat-panel-title>
+                                                        <mat-panel-description>
+                                                            {{panel.resolucion }}
+                                                            <mat-icon>date_range</mat-icon>
+                                                        </mat-panel-description>
+                                                    </mat-expansion-panel-header>
+                                                    <div class="row">
+                                                        <div class="col-lg-3 col-sm-6">
+                                                            <mat-form-field class="w-100" appearance="outline">
+                                                                <mat-label>Descripcion de Horario</mat-label>
+                                                                <input matInput value="{{panel.descripcion}}" ngModel name="descripcion">
+                                                            </mat-form-field>
+                                                        </div>
+                                                        <div class="col-lg-3 col-sm-6">
+                                                            <mat-form-field class="w-100" appearance="outline">
+                                                                <mat-label>Resolucion</mat-label>
+                                                                <input matInput [value]="panel.resolucion" ngModel name="resolucion"/>
+                                                            </mat-form-field>
+                                                        </div>
+                                                        <mat-form-field color="accent">
+                                                            <mat-label>Fecha Inicio - {{panel.fecha_inicio | date: 'dd/MM/yyyy':'GMT'}}</mat-label>
+                                                            <input matInput [matDatepicker]="picker2" [value]="panel.fecha_inicio" ngModel name="fecha_inicio">
+                                                            <mat-hint>MM/DD/AAAA</mat-hint>
+                                                            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                                                            <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                                                        </mat-form-field>
+                                                
+                                                        <mat-form-field color="accent">
+                                                            <mat-label>Fecha Final - {{panel.fecha_final | date: 'dd/MM/yyyy':'GMT'}}</mat-label>
+                                                            <input matInput [matDatepicker]="picker1" ngModel name="fecha_final">
+                                                            <mat-hint>MM/DD/YYYY</mat-hint>
+                                                            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                                                            <mat-datepicker #picker1></mat-datepicker>
+                                                        </mat-form-field>
+
+                                                    </div>
+                                                    
+                                                    <mat-grid-list [formGroup]="dias" cols="7" cols="7" rowHeight="3:1">
+                                                        <mat-grid-tile style="background-color: rgb(82, 135, 249);">E/S</mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(82, 135, 249);">            
+                                                            <mat-checkbox
+                                                                formControlName="lunes"
+                                                                checked="{{panel.lunes_estado ? 1 : false}}"
+                                                                [color]="'warn'"
+                                                                class="example-disabled-checkbox"
+                                                            >
+                                                                Lunes
+                                                            </mat-checkbox>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(82, 135, 249);">
+                                                            <mat-checkbox
+                                                                formControlName="martes"
+                                                                checked="{{panel.martes_estado ? 1 : false}}"
+                                                                [color]="'warn'"
+                                                                class="example-disabled-checkbox"
+                                                            >
+                                                                Martes
+                                                            </mat-checkbox>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(82, 135, 249);">
+                                                            <mat-checkbox
+                                                                formControlName="miercoles"
+                                                                checked="{{panel.miercoles_estado ? 1 : false}}"
+                                                                [color]="'warn'"
+                                                                class="example-disabled-checkbox"
+                                                            >
+                                                                Miercoles
+                                                            </mat-checkbox>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(82, 135, 249);">
+                                                            <mat-checkbox
+                                                                formControlName="jueves"
+                                                                checked="{{panel.jueves_estado ? 1 : false}}"
+                                                                [color]="'warn'"
+                                                                class="example-disabled-checkbox"
+                                                            >
+                                                                Jueves
+                                                            </mat-checkbox>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(82, 135, 249);">
+                                                            <mat-checkbox
+                                                                formControlName="viernes"
+                                                                checked="{{panel.viernes_estado ? 1 : false}}"
+                                                                [color]="'warn'"
+                                                                class="example-disabled-checkbox"
+                                                            >
+                                                                Viernes
+                                                            </mat-checkbox>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(82, 135, 249);">
+                                                            <mat-checkbox
+                                                                formControlName="sabado"
+                                                                checked="{{panel.sabado_estado ? 0 : false}}"
+                                                                [color]="'warn'"
+                                                                class="example-disabled-checkbox"
+                                                            >
+                                                                Sabado
+                                                            </mat-checkbox>
+                                                        </mat-grid-tile>
+                                                    </mat-grid-list>
+                                                    
+                                                    <mat-grid-list cols="7" rowHeight="3:1">
+                                                        <mat-grid-tile>
+                                                            Entrada 1
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile>
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.lunes_entrada_uno" (timeChanged)="lunes_entrada_uno($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile>
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.martes_entrada_uno" (timeChanged)="martes_entrada_uno($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile>
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.miercoles_entrada_uno" (timeChanged)="miercoles_entrada_uno($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile>
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.jueves_entrada_uno" (timeChanged)="jueves_entrada_uno($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile>
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.viernes_entrada_uno" (timeChanged)="viernes_entrada_uno($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile>
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.sabado_entrada_uno" (timeChanged)="sabado_entrada_uno($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                    </mat-grid-list>
+                                                    <mat-grid-list cols="7" rowHeight="3:1">
+                                                        <mat-grid-tile style="background-color: rgb(241, 235, 253);">
+                                                            Salida 1
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(241, 235, 253);">
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.lunes_salida_uno" (timeChanged)="lunes_salida_uno($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(241, 235, 253);">
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.martes_salida_uno" (timeChanged)="martes_salida_uno($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(241, 235, 253);">
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.miercoles_salida_uno" (timeChanged)="miercoles_salida_uno($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(241, 235, 253);">
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.jueves_salida_uno" (timeChanged)="jueves_salida_uno($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(241, 235, 253);">
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.viernes_salida_uno" (timeChanged)="viernes_salida_uno($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(241, 235, 253);">
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.sabado_salida_uno" (timeChanged)="sabado_salida_uno($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                    </mat-grid-list>
+                                                    <mat-grid-list cols="7" rowHeight="3:1">
+                                                        <mat-grid-tile>
+                                                            Entrada 2
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile>
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.lunes_entrada_dos" (timeChanged)="lunes_entrada_dos($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile>
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.martes_entrada_dos" (timeChanged)="martes_entrada_dos($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile>
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.miercoles_entrada_dos" (timeChanged)="miercoles_entrada_dos($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile>
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.jueves_entrada_dos" (timeChanged)="jueves_entrada_dos($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile>
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.viernes_entrada_dos" (timeChanged)="viernes_entrada_dos($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile>
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.sabado_entrada_dos" (timeChanged)="sabado_entrada_dos($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                    </mat-grid-list>
+                                                    <mat-grid-list cols="7" rowHeight="3:1">
+                                                        <mat-grid-tile style="background-color: rgb(241, 235, 253);">
+                                                            Salida 2
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(241, 235, 253);">
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.lunes_salida_dos" (timeChanged)="lunes_salida_dos($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(241, 235, 253);">
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.martes_salida_dos" (timeChanged)="martes_salida_dos($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(241, 235, 253);">
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.miercoles_salida_dos" (timeChanged)="miercoles_salida_dos($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(241, 235, 253);">
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.jueves_salida_dos" (timeChanged)="jueves_salida_dos($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(241, 235, 253);">
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.viernes_salida_dos" (timeChanged)="viernes_salida_dos($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                        <mat-grid-tile style="background-color: rgb(241, 235, 253);">
+                                                            <div class="ngx-timepicker-field-example" style="transform: scale(0.8);">
+                                                                <ngx-timepicker-field [format]="24" [defaultTime]="panel.sabado_salida_dos" (timeChanged)="sabado_salida_dos($event)"></ngx-timepicker-field>
+                                                            </div>
+                                                        </mat-grid-tile>
+                                                    </mat-grid-list>
+                                                    <br>
+                                                    <div class="col-4">
+                                                        <button (click)="updateHorario(forTemplateupdateFuncionario, panel.id)" mat-flat-button color="accent" class="w-100">
+                                                            Actualizar
+                                                        </button>
+                                                    </div>
+                                                
+                                            </mat-expansion-panel>     
+                                        </form>                
+                                    </mat-accordion>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+
+
+
+
+
+

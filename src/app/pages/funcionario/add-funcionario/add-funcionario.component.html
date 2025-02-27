@@ -1,0 +1,176 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+      <mat-card-title>Funcionarios Concejo Municipal de La Paz</mat-card-title>
+      <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title">Agregar Funcionario</h4>
+                            <p class="card-category">Perfil</p>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row">                              
+                                    <div class="col-md-3">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Apellido Paterno</mat-label>
+                                          <input matInput value="" />
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Apellido Materno</mat-label>
+                                          <input matInput value="" />
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Nombres</mat-label>
+                                          <input matInput value="" />
+                                      </mat-form-field>
+                                    </div>    
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Cedula</mat-label>
+                                          <input matInput value=""/>
+                                      </mat-form-field>
+                                  </div> 
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>item: P</mat-label>
+                                          <input matInput value="" />
+                                      </mat-form-field>
+                                  </div>  
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Contraseña</mat-label>
+                                          <input matInput value="" type="password"/>
+                                      </mat-form-field>
+                                  </div>   
+                                  
+                                                              
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-5">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Direccion</mat-label>
+                                          <input matInput value=""/>
+                                      </mat-form-field>
+                                  </div> 
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Fecha de Nacimiento</mat-label>
+                                            <input matInput [matDatepicker]="picker">
+                                          <mat-hint>DD/MM/YYYY</mat-hint>
+                                          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                          <mat-datepicker #picker></mat-datepicker>
+                                      </mat-form-field>
+                                  </div>
+                                  <div class="col-md-3">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Genero</mat-label>
+                                          <mat-select name="food">
+                                              <mat-option value="Masculino">Masculino</mat-option>
+                                              <mat-option value="Femenino">Femenino</mat-option>
+                                          </mat-select>
+                                      </mat-form-field>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Celular</mat-label>
+                                          <input matInput value=""/>
+                                      </mat-form-field>
+                                  </div> 
+                                  <div class="col-md-3">
+                                  <mat-form-field class="w-100" appearance="outline">
+                                      <mat-label>Nro. de Hijos (Si tiene)</mat-label>
+                                      <input matInput value=""/>
+                                  </mat-form-field>
+                                  </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Fecha de Ingreso</mat-label>
+                                            <input matInput [matDatepicker]="pickerfi">
+                                          <mat-hint>DD/MM/YYYY</mat-hint>
+                                          <mat-datepicker-toggle matIconSuffix [for]="pickerfi"></mat-datepicker-toggle>
+                                          <mat-datepicker #pickerfi></mat-datepicker>
+                                      </mat-form-field>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Fecha de Baja</mat-label>
+                                            <input matInput [matDatepicker]="pickerfb">
+                                          <mat-hint>DD/MM/YYYY</mat-hint>
+                                          <mat-datepicker-toggle matIconSuffix [for]="pickerfb"></mat-datepicker-toggle>
+                                          <mat-datepicker #pickerfb></mat-datepicker>
+                                      </mat-form-field>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Cargo</mat-label>
+                                          <input matInput value=""/>
+                                      </mat-form-field>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Haber Mensual</mat-label>
+                                          <input matInput value=""/>
+                                      </mat-form-field>
+                                  </div> 
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Area</mat-label>
+                                          <input matInput value=""/>
+                                      </mat-form-field>
+                                  </div>
+                                  <div class="col-md-3">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Rol</mat-label>
+                                          <mat-select name="food">
+                                              <mat-option value="Masculino">Usuario</mat-option>
+                                              <mat-option value="Femenino">Administrador</mat-option>
+                                          </mat-select>
+                                      </mat-form-field>
+                                  </div> 
+                                </div>
+                                  <div class="col-4">
+                                      <a [routerLink]="" mat-flat-button color="accent" class="w-100">
+                                          Guardar
+                                      </a>
+                                  </div>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-profile">
+                        <div class="card-avatar">
+                            <a href="javascript:void(0)">
+                                <img class="img" src="./assets/images/profile/user-1.jpg" class="rounded-circle" height="300"/>
+                            </a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      
+
+
+    </mat-card-content>
+</mat-card>
+
+

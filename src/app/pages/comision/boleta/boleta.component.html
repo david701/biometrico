@@ -1,0 +1,181 @@
+<mat-dialog-content class="mat-typography">
+  <div class="table_component" role="region" tabindex="0" id="print-section" style="display: block;">
+    <div>
+      <div style="display: block;">
+        <table>
+          <tbody>
+              <tr>
+                  <td>
+                    <img
+                      src="./assets/images/logos/dark-logo.svg"
+                      class="align-middle m-2"
+                      alt="logo"
+                    />
+                  </td>
+                  <td>
+                    <div mat-dialog-title align="center">BOLETA DE COMISION</div>
+                    <div align="center"><b> CONCEJO MUNICIPAL DE LA PAZ</b></div>
+                    <div align="center">Gobierno Autonomo Municipal de La Paz</div>
+                    <div align="center"><b>Creacion: </b> {{comision_data.created_at | date: 'dd/MM/yyyy hh:mm a':'GMT-4'}}</div>
+                  </td>
+                  <td align="right"><b>Nro. 00001/2025</b>  </td>
+              </tr>
+          
+          
+              <tr>
+                  <td colspan="3">
+                    <table>
+                      <tbody>
+                          <tr>
+                            <td><b>Fecha de Salida:</b></td>
+                            <td>{{ comision_data.fecha | date: 'dd, MMMM, yyyy':'GMT-4'}}</td>
+                            <td><b>Tipo:</b></td>
+                            <td colspan="2">{{comision_data.tipo}}</td>
+                          </tr>
+                          <tr>
+                            <td><b>Hora de Salida</b></td>
+                            <td>{{comision_data.desde}}</td>
+                            <td><b>Hora de Retorno</b></td>
+                            <td colspan="2">{{comision_data.hasta}}</td>
+                          </tr>
+                          <tr>
+                              <td><b>Nombres y Apellidos: </b></td>
+                              <td colspan="2">{{funcionario_data.nombre}} {{funcionario_data.paterno}} {{funcionario_data.materno}}</td>
+                              <td><b>C.I.: </b> {{funcionario_data.cedula}}</td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                              <td><b>Area: </b></td>
+                              <td colspan="4">{{area_data.nombre_dep}}</td>
+                          </tr>
+                          <tr>
+                              <td><b>Destino:</b></td>
+                              <td colspan="4">{{comision_data.destino}}</td>
+                          </tr>
+                          
+                          <tr>
+                              <td><b>Motivo: </b></td>
+                              <td colspan="4">{{comision_data.motivo}}</td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </td>
+              </tr>
+              <tr>
+                  <td style="padding: 50px;"></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>
+                    <div align="center">Solicitud</div>
+                    <div align="center"><b>SERVIDOR PUBLICO</b></div>
+                  </td>
+                  <td>
+                    <div align="center">Autorizacion</div>
+                    <div align="center"><b>DIRECTOR O CONCEJAL</b></div>
+                  </td>
+                  <td>
+                    <div align="center">Recibido</div>
+                    <div align="center"><b>RRHH - DAF</b></div>
+                  </td>
+              </tr>
+          </tbody>
+        </table>
+        <p align="center">Nota: La presente papeleta no debe contener BORRONES, ENMIENDAS NI TACHADURAS, caso contrario sera anulada.</p>
+      </div>
+  
+      <div style="display: none;">
+        <table>
+          <tbody>
+              <tr>
+                  <td>
+                    <img
+                      src="./assets/images/logos/dark-logo.svg"
+                      class="align-middle m-2"
+                      alt="logo"
+                    />
+                  </td>
+                  <td>
+                    <div mat-dialog-title align="center">BOLETA DE COMISION</div>
+                    <div align="center"><b> CONCEJO MUNICIPAL DE LA PAZ</b></div>
+                    <div align="center">Gobierno Autonomo Municipal de La Paz</div>
+                    <div align="center"><b>Creacion: </b> {{comision_data.created_at | date: 'dd/MM/yyyy hh:mm a':'GMT-4'}}</div>
+                  </td>
+                  <td align="right"><b>Nro. 00001/2025</b>  </td>
+              </tr>
+          
+          
+              <tr>
+                  <td colspan="3">
+                    <table>
+                      <tbody>
+                          <tr>
+                            <td><b>Fecha de Salida:</b></td>
+                            <td>{{ comision_data.fecha | date: 'dd, MMMM, yyyy':'GMT-4'}}</td>
+                            <td><b>Tipo:</b></td>
+                            <td colspan="2">{{comision_data.tipo}}</td>
+                          </tr>
+                          <tr>
+                            <td><b>Hora de Salida</b></td>
+                            <td>{{comision_data.desde}}</td>
+                            <td><b>Hora de Retorno</b></td>
+                            <td colspan="2">{{comision_data.hasta}}</td>
+                          </tr>
+                          <tr>
+                              <td><b>Nombres y Apellidos: </b></td>
+                              <td colspan="2">{{funcionario_data.nombre}} {{funcionario_data.paterno}} {{funcionario_data.materno}}</td>
+                              <td><b>C.I.: </b> {{funcionario_data.cedula}}</td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                              <td><b>Area: </b></td>
+                              <td colspan="4">{{area_data.nombre_dep}}</td>
+                          </tr>
+                          <tr>
+                              <td><b>Destino:</b></td>
+                              <td colspan="4">{{comision_data.destino}}</td>
+                          </tr>
+                          
+                          <tr>
+                              <td><b>Motivo: </b></td>
+                              <td colspan="4">{{comision_data.motivo}}</td>
+                          </tr>
+                      </tbody>
+                    </table>
+                  </td>
+              </tr>
+              <tr>
+                  <td style="padding: 50px;"></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr>
+                  <td>
+                    <div align="center">Solicitud</div>
+                    <div align="center"><b>SERVIDOR PUBLICO</b></div>
+                  </td>
+                  <td>
+                    <div align="center">Autorizacion</div>
+                    <div align="center"><b>DIRECTOR O CONCEJAL</b></div>
+                  </td>
+                  <td>
+                    <div align="center">Recibido</div>
+                    <div align="center"><b>RRHH - DAF</b></div>
+                  </td>
+              </tr>
+          </tbody>
+        </table>
+        <p align="center">Nota: La presente papeleta no debe contener BORRONES, ENMIENDAS NI TACHADURAS, caso contrario sera anulada.</p>
+      </div>
+    </div>
+
+  </div>
+    
+
+  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Salir</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="imprimir()">Imprimir</button>
+</mat-dialog-actions>

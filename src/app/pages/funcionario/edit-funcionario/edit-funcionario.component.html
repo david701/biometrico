@@ -1,0 +1,191 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+      <mat-card-title>Funcionarios Concejo Municipal de La Paz</mat-card-title>
+      <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title">Editar Funcionario</h4>
+                            <p class="card-category">Perfil</p>
+                        </div>
+                        <div class="card-body">
+                            <form (ngSubmit)="updateFuncionario(forTemplateaddFuncionario)" #forTemplateaddFuncionario="ngForm">
+                                <div class="row">                              
+                                    <div class="col-md-3">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Apellido Paterno </mat-label>
+                                          <input ngModel name="paterno" matInput [formControl]="paternoControl"/>
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Apellido Materno</mat-label>
+                                          <input ngModel name="materno" matInput value="{{funcionario.materno}}" [formControl]="maternoControl"/>
+                                      </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Nombres</mat-label>
+                                          <input ngModel name="nombre" matInput [formControl]="nombreControl"/>
+                                      </mat-form-field>
+                                    </div>    
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Cedula</mat-label>
+                                          <input ngModel name="cedula" matInput [formControl]="cedulaControl"/>
+                                      </mat-form-field>
+                                  </div> 
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>item</mat-label>
+                                          <input ngModel name="item" matInput value="{{funcionario.item}}" [formControl]="itemControl"/>
+                                      </mat-form-field>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Contraseña</mat-label>
+                                          <input ngModel name="password" matInput value="" type="password" [formControl]="passwordControl"/>
+                                      </mat-form-field>
+                                  </div>   
+                                  
+                                                              
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-5">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Direccion</mat-label>
+                                          <input ngModel name="direccion" matInput value="{{funcionario.direccion}}" [formControl]="direccionControl"/>
+                                      </mat-form-field>
+                                  </div> 
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Fecha de Nacimiento</mat-label>
+                                            <input matInput [matDatepicker]="dp" (dateChange)="f_nac($event)" [formControl]="fecha_n">
+                                          <mat-hint>DD/MM/AAAA</mat-hint>
+                                          <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+                                          <mat-datepicker #dp startView="multi-year"></mat-datepicker>
+                                      </mat-form-field>
+                                  </div>
+                                  <div class="col-md-3">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Genero</mat-label>
+                                          <mat-select ngModel name="genero" [formControl]="generoControl">
+                                            <mat-option value="M">Masculino</mat-option>
+                                            <mat-option value="F">Femenino</mat-option>
+                                          </mat-select>
+                                      </mat-form-field>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Celular</mat-label>
+                                          <input ngModel name="celular" matInput [formControl]="celularControl"/>
+                                      </mat-form-field>
+                                  </div> 
+                                  <div class="col-md-3">
+                                  <mat-form-field class="w-100" appearance="outline">
+                                      <mat-label>Nro. de Hijos (Si tiene)</mat-label>
+                                      <input ngModel name="hijos" matInput [formControl]="hijosControl"/>
+                                  </mat-form-field>
+                                  </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Fecha de Ingreso</mat-label>
+                                            <input ngModel name="fecha_ingreso" matInput [matDatepicker]="pickerfi" [formControl]="fecha_i">
+                                          <mat-hint>DD/MM/YYYY</mat-hint>
+                                          <mat-datepicker-toggle matIconSuffix [for]="pickerfi"></mat-datepicker-toggle>
+                                          <mat-datepicker #pickerfi></mat-datepicker>
+                                      </mat-form-field>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Fecha de Baja</mat-label>
+                                            <input ngModel name="fecha_baja" matInput [matDatepicker]="pickerfb" [formControl]="fecha_b">
+                                          <mat-hint>DD/MM/YYYY</mat-hint>
+                                          <mat-datepicker-toggle matIconSuffix [for]="pickerfb"></mat-datepicker-toggle>
+                                          <mat-datepicker #pickerfb></mat-datepicker>
+                                      </mat-form-field>
+                                  </div>
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Cargo</mat-label>
+                                          <input ngModel name="cargo" matInput [formControl]="cargoControl"/>
+                                      </mat-form-field>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="col-md-4">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Haber Mensual</mat-label>
+                                          <input ngModel name="haber_mensual" matInput [formControl]="haber_mensualControl"/>
+                                      </mat-form-field>
+                                  </div> 
+                                  <div class="col-md-4">
+                                    <mat-form-field class="w-100" appearance="outline">
+                                        <mat-label>Area</mat-label>
+                                        <mat-select ngModel name="id_area" [value]="areaid">
+                                            <mat-option *ngFor="let area of areas_data" [value]="area.id">{{area.nombre_dep}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                  </div>
+                                  <div class="col-md-3">
+                                      <mat-form-field class="w-100" appearance="outline">
+                                          <mat-label>Rol</mat-label>
+                                          <mat-select ngModel name="id_rol" [value]="rolid">
+                                              <mat-option *ngFor="let rol of rol_data" [value]="rol.id">{{rol.rol}}</mat-option>
+                                          </mat-select>
+                                      </mat-form-field>
+                                  </div>
+                                  <div class="col-md-1">
+                                    <mat-slide-toggle ngModel name="estado" color="warn" checked="{{funcionario.estado ? 0: false}}" [formControl]="estadoControl">Activo</mat-slide-toggle>
+                                  </div>
+                                  
+ 
+                                </div>
+                                  <div class="col-4">
+                                      <button type="submit" mat-flat-button color="accent" class="w-100">
+                                          Actualizar
+                                      </button>
+                                  </div>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-profile">
+                        <div class="card-avatar">
+                            <img id="avatar-photo" #avatarImg class="avatar-photo"
+                            [src]="photo && photo !== '' ? photo : 'https://www.w3schools.com/howto/img_avatar.png'" (mouseenter)="showAddPhotoOverlay=true"
+                            alt="avatar photo">
+
+                            <div *ngIf="showAddPhotoOverlay" id="add-photo-overlay" class="avatar-photo"
+                                (mouseleave)="showAddPhotoOverlay=false">
+
+                                <button id="add-avatar-photo-button" class="center-positon-absolute" mat-icon-button (click)="abrirArchivoInput(fileInput)">
+                                    <mat-icon>add_a_photo</mat-icon>
+                                </button>
+                                <mat-icon id="remove-avatar-photo-button" *ngIf="photo && photo !== ''" (click)="eleminarFoto()"
+                                    matTooltip="remove this photo">close</mat-icon>
+                            </div>
+                            <input #fileInput type="file" (change)="agregarFoto($event)" name="avatar" accept="image/png, image/jpeg"
+                            style="display:none;">
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+      </div>
+      
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,157 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+      <mat-card-title>Marcaciones</mat-card-title>
+      <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-md-9 card-header card-header-danger">
+                                <h4 class="card-title">Asistencias</h4>
+                            </div>
+                            <div class="col-md-3">
+                                <button  (click)="descargarMarcaciones()" mat-raised-button mat-flat-button color="accent" class="w-100">
+                                    Descargar Marcaciones
+                                </button>
+                            </div>
+                        </div>
+                        
+
+                        <div class="card-body">
+                            <form [formGroup]="funcionariosForm">
+                                <div class="row">                              
+                                    <div class="col-md-6">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Departamento</mat-label>
+                                            <mat-select formControlName="area" (selectionChange)="onAreaChange()">
+                                                <mat-option>--SELECCIONAR--</mat-option>
+                                                <mat-option *ngFor="let area of areas_data" [value]="area.id">{{area.nombre_dep}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div> 
+                                    <div class="col-md-6">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>Funcionario</mat-label>
+                                            <mat-select formControlName="funcionario" (selectionChange)="onFuncionarioChange()">
+                                                <mat-option value="todo">TODOS</mat-option>
+                                                <mat-option *ngFor="let funcionario of funcionarios_data" [value]="funcionario.id">
+                                                    {{funcionario.paterno}} {{funcionario.materno}} {{funcionario.nombre}}
+                                                </mat-option>
+                                            </mat-select>                                            
+                                        </mat-form-field>
+                                    </div>   
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>De</mat-label>
+                                              <input formControlName="f_inicio" matInput [matDatepicker]="picker_fia">
+                                            <mat-hint>MM/DD/YYYY</mat-hint>
+                                            <mat-datepicker-toggle matIconSuffix [for]="picker_fia"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker_fia></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <mat-form-field class="w-100" appearance="outline">
+                                            <mat-label>a</mat-label>
+                                              <input formControlName="f_final" matInput [matDatepicker]="picker_ffa">
+                                            <mat-hint>MM/DD/YYYY</mat-hint>
+                                            <mat-datepicker-toggle matIconSuffix [for]="picker_ffa"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker_ffa></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>                                                              
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <button  (click)="onFormSubmit()" mat-raised-button mat-flat-button color="accent" class="w-100">
+                                            Mostrar
+                                        </button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button (click)="exportToExcel()" mat-flat-button color="warn" class="w-100">
+                                            Reporte Excel
+                                        </button>
+                                    </div> 
+                                    <div class="col-md-3">
+                                        <button (click)="downloadAsPDF()" mat-flat-button color="warn" class="w-100">
+                                            Reporte PDF
+                                        </button>
+                                    </div> 
+                                </div>
+                                <br>
+                                <hr>
+                                
+                                <div id="pdfReporte" #pdfReporte>
+
+                                
+                                
+                                    <table style="display: auto;" class="mat-elevation-z8 content-table" id="marcaciones">
+                                        <thead>
+                                            <tr>
+                                                <th> </th>
+                                                <th> </th>
+                                                <th> </th>
+                                                <th colspan="2">1er Periodo</th>
+                                                <th colspan="2">2do Periodo</th>
+                                                <th colspan="2">Obs. 1er Periodo</th>
+                                                <th colspan="2">Obs. 2do Periodo</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Dia</th>
+                                                <th>Fecha</th>
+                                                <th>Horario</th>
+                                                <th>Entrada</th>
+                                                <th>Salida</th>
+                                                <th>Entrada</th>
+                                                <th>Salida</th>
+                                                <th>Entrada</th>
+                                                <th>Salida</th>
+                                                <th>Entrada</th>
+                                                <th>Salida</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr *ngFor="let f of planilla">
+                                                <td>{{f.dia | date:'EEEE' : 'GMT'}}</td>
+                                                <td>{{f.fecha | date:'dd MMM yyyy' : 'GMT'}}</td>
+                                                <td>{{f.horario}}</td>
+                                                <td [style]="f.colorE">{{f.entradaP}}</td>
+                                                <td [style]="f.colorS">{{f.salidaP}}</td>
+                                                <td>{{f.entradaS}}</td>
+                                                <td>{{f.salidaS}}</td>
+                                                <td>{{f.obsEntradaP ? f.obsEntradaP +' min': "-"}}</td>
+                                                <td>{{f.obsSalidaP}}</td>
+                                                <td>{{f.obsEntradaS}}</td>
+                                                <td>{{f.obsSalidaS}}</td>
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>    
+
+                                    <div class="title">
+                                        Total Atrasos: {{totalAtrasos}} min.
+                                    </div>
+                                </div>
+
+                                <div class="textError">
+                                    <h1> Cargar Datos... </h1>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+      </div>
+      
+
+
+    </mat-card-content>
+</mat-card>

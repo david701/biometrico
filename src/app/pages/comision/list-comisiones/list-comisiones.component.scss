@@ -1,0 +1,42 @@
+.tabla-container {
+  max-width: 2000px;
+  margin: 0px;
+  padding: 0px;
+  
+
+  .buscador {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  table {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    
+  }
+
+  th {
+    background-color: #4CAF50;
+    color: white;
+    font-size: small;
+    font-weight: bold;
+  }
+
+  td {
+    font-size: 13.5px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  tr:hover {
+    background-color: #e8f5e9;
+    cursor: pointer;
+  }
+
+  mat-paginator {
+    margin-top: 10px;
+  }
+}

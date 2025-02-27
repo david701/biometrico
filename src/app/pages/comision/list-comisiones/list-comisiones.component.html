@@ -1,0 +1,98 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+      <div class="row">
+        <div class="col-md-9">
+          <mat-card-title>Comisiones</mat-card-title>
+        </div>
+        <div class="col md-3">
+          <div class="container-fluid">
+            <a [routerLink]="'../add-comisiones'" mat-flat-button style="background-color: #4CAF50; color: rgb(255, 255, 255);" class="w-100">
+                Agregar Comision
+            </a>
+          </div>
+        </div>
+        
+      </div>
+      <div class="tabla-container">
+
+      
+        <div class="main-content">
+            <mat-form-field appearance="outline">
+              <mat-label>Buscar</mat-label>
+              <input matInput (keyup)="buscador($event)" placeholder="Buscar" #input>
+            </mat-form-field>
+        </div>
+        
+
+        <table mat-table [dataSource]="dataComision" class="mat-elevation-z8">
+        
+          <!-- Position Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef><span>Nro. </span> </th>
+            <td mat-cell *matCellDef="let comision; let i = index"> {{i+1}} </td>
+          </ng-container>
+        
+          <!-- Name Column -->
+          <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+            <td mat-cell *matCellDef="let comision"> {{comision.tipo}} </td>
+          </ng-container>
+        
+          <!-- Weight Column -->
+          <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef> Salida </th>
+            <td mat-cell *matCellDef="let comision"> {{comision.fecha | date: 'dd/MM/yyyy':'GMT-4'}} </td>
+          </ng-container>
+        
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="desde">
+            <th mat-header-cell *matHeaderCellDef> Desde </th>
+            <td mat-cell *matCellDef="let comision"> {{comision.desde}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="hasta">
+            <th mat-header-cell *matHeaderCellDef> Hasta </th>
+            <td mat-cell *matCellDef="let comision"> {{comision.hasta}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="destino">
+            <th mat-header-cell *matHeaderCellDef> Destino </th>
+            <td mat-cell *matCellDef="let comision"> {{comision.destino}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="solicitud">
+            <th mat-header-cell *matHeaderCellDef> Creacion</th>
+            <td mat-cell *matCellDef="let comision"> {{comision.created_at | date: 'dd/MM/yyyy hh:mm a':'GMT-4'}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let comision">
+              <span *ngIf="comision.estado == 1">
+                <mat-chip class="example-box f-s-14" style="background-color: rgb(84, 224, 107);"><p style="color: white;">Aprobado</p> </mat-chip>
+              </span>
+              <span *ngIf="comision.estado == 0">
+                <mat-chip class="example-box f-s-14" style="background-color: rgb(223, 80, 44);"><p style="color: white;">Solicitado</p> </mat-chip>
+              </span>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="accion">
+            <th mat-header-cell *matHeaderCellDef> Accion </th>
+            <td mat-cell *matCellDef="let comision"><button mat-button (click)="openDialog(comision.id)"><i-tabler name="eye"></i-tabler></button></td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedCmoision"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedCmoision;"></tr>
+        
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="state-cell" colspan="4">No hay Datos...</td>
+          </tr>
+        </table>
+
+      </div>
+
+    </mat-card-content>
+</mat-card>
+
